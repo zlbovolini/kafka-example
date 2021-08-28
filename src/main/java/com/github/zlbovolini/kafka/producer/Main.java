@@ -7,14 +7,16 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
+import java.util.UUID;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
         var producer = new KafkaProducer<String, String>(properties());
 
-        var ecommerceNewOrder = new ProducerRecord<>("ECOMMERCE_NEW_ORDER", "ORDER_KEY", "Hello world");
-        var ecommerceSendEmail = new ProducerRecord<>("ECOMMERCE_SEND_EMAIL", "EMAIL_KEY", "Hello, how are you?");
+        var key = UUID.randomUUID().toString();
+        var ecommerceNewOrder = new ProducerRecord<>("ECOMMERCE_NEW_ORDER", key, "Hello world");
+        var ecommerceSendEmail = new ProducerRecord<>("ECOMMERCE_SEND_EMAIL", key, "Hello, how are you?");
 
         Callback callback = (metadata, exception) -> {
             if (exception != null) {
