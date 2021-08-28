@@ -6,7 +6,16 @@
 
     <groupId>com.github.zlbovolini</groupId>
     <artifactId>kafka-example</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+
+    <modules>
+        <module>service-email</module>
+        <module>service-fraud-detector</module>
+        <module>service-log</module>
+        <module>service-new-order</module>
+        <module>common-kafka</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
